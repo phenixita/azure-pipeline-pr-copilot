@@ -1,4 +1,4 @@
-# AI PR Review Task for Azure Pipelines
+# PR Copilot Task for Azure Pipelines
 
 The AI PR Review Task for Azure Pipelines is designed to use the GPT model from OpenAI to review Pull Requests and provide feedback as comments in the Pull Request.
 
@@ -8,7 +8,7 @@ Before using this task, ensure that the build service has permissions to contrib
 
 ### Give permission to the build service agent
 
-![contribute_to_pr](https://github.com/97saundersj/azure-pipeline-ai-pr-review/blob/main/images/contribute_to_pr.png?raw=true)
+![contribute_to_pr](https://github.com/phenixita/azure-pipeline-pr-copilot/blob/main/images/contribute_to_pr.png?raw=true)
 
 ### Allow Task to access the system token
 
@@ -28,7 +28,7 @@ steps:
 
 Enable the option "Allow scripts to access the OAuth token" in the "Agent job" properties.
 
-![allow_access_token](https://github.com/97saundersj/azure-pipeline-ai-pr-review/blob/main/images/allow_access_token.png?raw=true)
+![allow_access_token](https://github.com/phenixita/azure-pipeline-pr-copilot/blob/main/images/allow_access_token.png?raw=true)
 
 ### Azure Open AI service
 
