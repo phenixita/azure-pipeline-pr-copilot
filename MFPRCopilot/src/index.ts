@@ -1,5 +1,5 @@
-import * as tl from "azure-pipelines-task-lib/task";
-import { Configuration, OpenAIApi } from 'openai';
+import * as tl from "azure-pipelines-task-lib";
+import { OpenAI } from 'openai';
 import { deleteExistingComments } from './pr';
 import { reviewFile } from './review';
 import { getTargetBranchName } from './utils';
@@ -13,10 +13,10 @@ async function run() {
       return;
     }
 
-    let openai: OpenAIApi | undefined;
+    let openai: OpenAI | undefined;
     const supportSelfSignedCertificate = tl.getBoolInput('support_self_signed_certificate');
-    const apiKey = tl.getInput('api_key', true);
-    const aoiEndpoint = tl.getInput('aoi_endpoint');
+    const apiKey = tl.getInput('apiKey', true);
+    const aoiEndpoint = tl.getInput('azureOpenAiEndpoint');
 
     if (apiKey == undefined) {
       tl.setResult(tl.TaskResult.Failed, 'No Api Key provided!');
@@ -24,11 +24,7 @@ async function run() {
     }
 
     if (aoiEndpoint == undefined) {
-      const openAiConfiguration = new Configuration({
-        apiKey: apiKey,
-      });
-
-      openai = new OpenAIApi(openAiConfiguration);
+      openai = new OpenAI({ apiKey: apiKey });
     }
 
     const httpsAgent = new https.Agent({

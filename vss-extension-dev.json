@@ -1,8 +1,8 @@
 {
     
     "manifestVersion": 1,
-    "id": "MFPullRequestCopilot",
-    "name": "Pull-request Copilot",
+    "id": "MFPullRequestCopilot-dev",
+    "name": "Pull-request Copilot (Development Version)",
     "version": "0.1.0",
     "publisher": "micheleferracin",
     "galleryFlags": [
@@ -44,13 +44,13 @@
     },
     "contributions": [
         {
-            "id": "MFPullRequestCopilot",
+            "id": "MFPRCopilot",
             "type": "ms.vss-distributed-task.task",
             "targets": [
                 "ms.vss-distributed-task.tasks"
             ],
             "properties": {
-                "name": "MFPullRequestCopilot"
+                "name": "MFPRCopilot"
             }
         }
     ]
