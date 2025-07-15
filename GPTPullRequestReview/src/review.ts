@@ -1,17 +1,17 @@
 import fetch from 'node-fetch';
 import { git } from './git';
-import { OpenAIApi } from 'openai';
+import { OpenAI } from 'openai';
 import { addCommentToPR } from './pr';
 import { Agent } from 'https';
 import * as tl from "azure-pipelines-task-lib/task";
 
-export async function reviewFile(targetBranch: string, fileName: string, httpsAgent: Agent, apiKey: string, openai: OpenAIApi | undefined, aoiEndpoint: string | undefined) {
+export async function reviewFile(targetBranch: string, fileName: string, httpsAgent: Agent, apiKey: string, openai: OpenAI | undefined, aoiEndpoint: string | undefined) {
   console.log(`\nStart reviewing ${fileName} ...`);
 
   const defaultOpenAIModel = 'gpt-3.5-turbo';
   const patch = await git.diff([targetBranch, '--', fileName]);
 
-  const instructions = tl.getInput('ai_instructions')
+  const instructions = tl.getInput('aiInstructions')!
 
   try {
     let choices: any;
@@ -21,7 +21,7 @@ export async function reviewFile(targetBranch: string, fileName: string, httpsAg
       console.log(`Sending changes to OpenAI:`)
       console.log(patch)
 
-      const response = await openai.createChatCompletion({
+      const response = await openai.chat.completions.create({
         model: tl.getInput('model') || defaultOpenAIModel,
         messages: [
           {
@@ -36,7 +36,7 @@ export async function reviewFile(targetBranch: string, fileName: string, httpsAg
         max_tokens: 500
       });
 
-      choices = response.data.choices
+      choices = response.choices
     }
     else if (aoiEndpoint) {
       const request = await fetch(aoiEndpoint, {

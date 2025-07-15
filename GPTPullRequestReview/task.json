@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
   "id": "962a2b6e-0555-477b-b8dc-40a7af3f0c8b",
   "name": "AIPullRequestReview",
   "friendlyName": "AI PR Review",
@@ -11,15 +12,15 @@
   ],
   "demands": [],
   "version": {
-    "Major": "0",
-    "Minor": "1",
-    "Patch": "17"
+    "Major": 1,
+    "Minor": 1,
+    "Patch": 1
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "AIPullRequestReview $(message)",
   "inputs": [
     {
-      "name": "api_key",
+      "name": "apiKey",
       "type": "string",
       "label": "Api key",
       "defaultValue": "",
@@ -40,7 +41,7 @@
       "helpMarkDown": "The OpenAI model to use. not used if you use Azure OpenAI. if no model is selected, the GPT 3.5 Turbo model is used."
     },
     {
-      "name": "aoi_endpoint",
+      "name": "azureOpenAiEndpoint",
       "type": "string",
       "label": "Azure OpenApi Endpoint",
       "defaultValue": "",
@@ -48,7 +49,7 @@
       "helpMarkDown": "Azure OpenApi Endpoint, leave empty to use default endpoint. (optional)"
     },
     {
-      "name": "support_self_signed_certificate",
+      "name": "supportSelfSignedCertificate",
       "type": "boolean",
       "label": "Support self-signed certificate",
       "defaultValue": "false",
@@ -56,7 +57,7 @@
       "helpMarkDown": "Select this option to support self-signed certificate."
     },
     {
-      "name": "ai_instructions",
+      "name": "aiInstructions",
       "type": "multiLine",
       "label": "AI Instruction Prompt",
       "defaultValue": "Act as a code reviewer of a Pull Request, providing feedback on possible bugs and clean code issues.\nYou are provided with the Pull Request changes in a patch format.\nEach patch entry has the commit message in the Subject line followed by the code changes (diffs) in a unidiff format.\n\nAs a code reviewer, your task is:\n- Review only added, edited or deleted lines.\n- If there's no bugs and the changes are correct, write only 'No feedback.'\n- If there's bug or incorrect code changes, don't write 'No feedback.'",
