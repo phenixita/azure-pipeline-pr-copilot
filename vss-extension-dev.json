@@ -1,0 +1,57 @@
+{
+    
+    "manifestVersion": 1,
+    "id": "MFPullRequestCopilot-dev",
+    "name": "Pull-request Copilot (Development Version)",
+    "version": "0.1.0",
+    "publisher": "micheleferracin",
+    "galleryFlags": [
+        "Public",
+        "Preview"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "A task that reviews Pull Requests using GPT models from OpenAI and Azure.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/icon.png"        
+    },
+    "tags": [
+        "OpenAI",
+        "GPT",
+        "pullRequest",
+        "copliot",
+        "review"
+    ],
+    "files": [
+        {
+            "path": "MFPRCopilot"
+        }
+    ],
+    "repository" : {
+        "type" : "git",
+        "uri" : "https://github.com/phenixita/azure-pipeline-pr-copilot"
+    },
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
+    "contributions": [
+        {
+            "id": "MFPRCopilot",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "MFPRCopilot"
+            }
+        }
+    ]
+}

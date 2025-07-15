@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
-  "id": "962a2b6e-0555-477b-b8dc-40a7af3f0c8b",
+  "id": "b57693a7-f4cb-43f2-b427-1f3f1621c34a",
   "name": "MFPullRequestCopilotTask",
   "friendlyName": "Pull-request Copilot",
   "description": "This task uses OpenAi API to review and leave comments on pull-requests.",
@@ -66,7 +66,7 @@
     }
   ],
   "execution": {
-    "Node10": {
+    "Node20_1": {
       "target": "dist/index.js"
     }
   }

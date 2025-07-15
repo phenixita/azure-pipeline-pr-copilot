@@ -15,8 +15,8 @@ async function run() {
 
     let openai: OpenAI | undefined;
     const supportSelfSignedCertificate = tl.getBoolInput('support_self_signed_certificate');
-    const apiKey = tl.getInput('api_key', true);
-    const aoiEndpoint = tl.getInput('aoi_endpoint');
+    const apiKey = tl.getInput('apiKey', true);
+    const aoiEndpoint = tl.getInput('azureOpenAiEndpoint');
 
     if (apiKey == undefined) {
       tl.setResult(tl.TaskResult.Failed, 'No Api Key provided!');
